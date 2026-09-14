@@ -1,0 +1,84 @@
+{
+  "title": "StairwayToHeavenReadingSeminar",
+  "slug": "stairway-to-heaven-reading-seminar",
+  "githubOwner": "q3556593474q-coder",
+  "siteUrl": "https://q3556593474q-coder.github.io/stairway-to-heaven-reading-seminar/",
+  "author": "Hanzhen Bao",
+  "copyrightYear": 2026,
+  "quote": "Be a Rock and not to roll.",
+  "attribution": "— Led Zeppelin, Stairway To Heaven",
+  "introduction": [
+    "This reading seminar is a place to study mathematics carefully, discuss proofs, and keep a record of questions and ideas. The program brings together reading in topology, differentiable manifolds, and Riemann geometry.",
+    "Each meeting begins with a selected text. Reading notes are prepared, revisited in discussion, and supplemented with examples and further observations. These pages collect that work as it develops."
+  ],
+  "informationCover": { "file": "information.jpg", "alt": "Two geometric flights of concrete stairs crossing a quiet architectural space", "position": "center 55%" },
+  "aboutSections": [
+    {
+      "id": "about-me",
+      "title": "About Me",
+      "paragraphs": [
+        "I am Hanzhen Bao. This website brings together my mathematical reading notes, seminar materials, and reflections from discussion.",
+        "My reading follows connections between topology, differentiable manifolds, and geometry, with particular attention to examples and the ideas behind proofs."
+      ]
+    },
+    {
+      "id": "about-my-mentors",
+      "title": "About My Mentors",
+      "paragraphs": [
+        "Mathematical reading grows through conversation. This section will introduce the mentors who help guide the seminar through questions, explanations, and feedback.",
+        "Their academic profiles, research interests, and contributions to our discussions will be collected here."
+      ]
+    },
+    {
+      "id": "about-the-textbooks",
+      "title": "More Information About the Textbooks Used",
+      "paragraphs": [
+        "The seminar draws on textbooks in topology, differentiable manifolds, and Riemann geometry. Each reading group will list its chosen text and the chapters discussed.",
+        "Additional references, comments on prerequisites, and suggestions for further reading will be added as the program develops."
+      ]
+    }
+  ],
+  "homeCover": { "file": "home-upward.png", "alt": "An upward view of a curved concrete stairway beneath a luminous skylight", "position": "center 20%" },
+  "seminars": [
+    {
+      "id": "topology",
+      "title": "Topology & Algebraic Topology",
+      "cover": { "file": "topology.jpg", "alt": "A circular opening within curving concrete architecture", "position": "center 50%" },
+      "textbook": "",
+      "mentor": { "name": "" },
+      "student": { "name": "" },
+      "entries": [
+        {
+          "id": "covering-maps-2026-09-14",
+          "date": "2026-09-14",
+          "speaker": "BaoHanzhen",
+          "title": "Covering maps",
+          "abstract": "This sample session introduces covering maps through evenly covered neighborhoods and the familiar covering of the circle by the real line. We discuss path lifting, the relationship with the fundamental group, and a selection of basic examples. The attached draft serves as a sample of the notes that will accompany each reading seminar.",
+          "pdf": "2026-09-14-demonstration.pdf",
+          "pdfLabel": "Sample notes (PDF)",
+          "discussionPdf": "2026-09-14-demonstration.pdf",
+          "handwritingPdf": "2026-09-14-original-handwriting.pdf",
+          "sample": true
+        }
+      ]
+    },
+    {
+      "id": "differential-manifolds",
+      "title": "Differentiable Manifolds",
+      "cover": { "file": "manifolds.jpg", "alt": "A flowing white architectural surface beneath a blue sky", "position": "center 55%" },
+      "textbook": "",
+      "mentor": { "name": "" },
+      "student": { "name": "" },
+      "entries": []
+    },
+    {
+      "id": "riemann-geometry",
+      "title": "Riemann Geometry",
+      "cover": { "file": "riemann.jpg", "alt": "A spiraling staircase within a curved museum interior", "position": "center 50%" },
+      "textbook": "",
+      "mentor": { "name": "" },
+      "student": { "name": "" },
+      "entries": []
+    }
+  ]
+}
