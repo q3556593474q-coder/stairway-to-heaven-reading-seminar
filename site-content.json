@@ -80,5 +80,46 @@
       "student": { "name": "" },
       "entries": []
     }
-  ]
+  ],
+  "lectureMaterials": [
+    {
+      "id": "complex-analysis",
+      "title": "Complex Analysis",
+      "cover": {
+        "file": "complex-analysis.png",
+        "alt": "An upward view of curved concrete walls framing a softly lit circular skylight",
+        "position": "center 40%"
+      },
+      "introduction": [],
+      "entries": []
+    },
+    {
+      "id": "basic-topology",
+      "title": "Basic Topology",
+      "cover": {
+        "file": "basic-topology.png",
+        "alt": "Overlapping concrete stair flights beneath a geometric opening to daylight",
+        "position": "center 45%"
+      },
+      "introduction": [],
+      "entries": []
+    }
+  ],
+  "readingJournal": {
+    "id": "reading-journal",
+    "title": "Reading Journal",
+    "quote": [
+      "Love life as though death were near;",
+      "Seek knowledge as though life were endless."
+    ],
+    "cover": {
+      "file": "reading-journal.png",
+      "alt": "A quiet concrete stairway ascending toward natural light between gently curving walls",
+      "position": "center 45%"
+    },
+    "introduction": [
+      "A journal of mathematical reading guided by curiosity. These notes trace ideas, questions, and connections encountered along the way, leaving room for reflection and return."
+    ],
+    "entries": []
+  }
 }

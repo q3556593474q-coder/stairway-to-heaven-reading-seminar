@@ -22,3 +22,11 @@ The source pages state that the photographs are free to use under the Unsplash L
 - Riemann geometry: https://images.unsplash.com/photo-1628120916377-c5bf579b119f
 
 The downloaded photographs use the verified image search URLs with width 3000 and JPEG quality 60. The new homepage image was generated separately as described above; the other covers were not edited in this replacement.
+
+## New section covers — 2026-09-18
+
+The following fictional architectural scenes were generated with the built-in image_gen tool. They use cool gray concrete, soft natural light, and upward-looking compositions to complement the existing covers. They do not depict identified real buildings. Exact prompts are preserved in `NEW-COVER-PROMPTS.md`. All are 1536 × 1024 pixels.
+
+- Complex Analysis: `dist/assets/images/complex-analysis.png` — curved concrete walls and a circular skylight.
+- Basic Topology: `dist/assets/images/basic-topology.png` — overlapping stair flights and a rectangular opening.
+- Reading Journal: `dist/assets/images/reading-journal.png` — stairs ascending toward natural light.

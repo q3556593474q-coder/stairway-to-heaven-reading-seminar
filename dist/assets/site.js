@@ -3,6 +3,41 @@
 document.documentElement.classList.add('enhanced');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+// Older browsers retain normal links, with a short fade at the journal boundary.
+// Modern browsers use the shared quotation layer in the cross-document transition.
+const nativePageTransitions = 'onpagereveal' in window && 'onpageswap' in window;
+const quote = document.querySelector('.quote');
+const isJournal = document.body.dataset.page === 'reading-journal';
+let quoteArrival = isJournal;
+try {
+  quoteArrival = sessionStorage.getItem('quote-arrival') === 'yes' || isJournal;
+  sessionStorage.removeItem('quote-arrival');
+} catch { /* Navigation also works when storage is unavailable. */ }
+if (!nativePageTransitions && !reducedMotion.matches && quote && quoteArrival) {
+  quote.animate([{opacity:0,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}], {duration:650,easing:'cubic-bezier(.22,1,.36,1)'});
+}
+if (!nativePageTransitions) {
+  let navigating = false;
+  document.addEventListener('click', async event => {
+    const link = event.target.closest('a[href]');
+    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.hasAttribute('download') || (link.target && link.target !== '_self') || reducedMotion.matches || !quote) return;
+    const target = new URL(link.href);
+    const targetIsJournal = /\/reading-journal\/(?:index\.html)?$/.test(target.pathname);
+    if (target.origin !== location.origin || targetIsJournal === isJournal) return;
+    event.preventDefault();
+    if (navigating) return;
+    navigating = true;
+    try { sessionStorage.setItem('quote-arrival', 'yes'); } catch { /* Optional. */ }
+    const fade = quote.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-4px)'}], {duration:180,easing:'ease',fill:'forwards'});
+    await fade.finished.catch(() => {});
+    location.assign(target.href);
+  });
+  window.addEventListener('pageshow', event => {
+    navigating = false;
+    if (event.persisted) quote?.getAnimations().forEach(animation => animation.cancel());
+  });
+}
+
 for (const dropdown of document.querySelectorAll('[data-nav-dropdown]')) {
   const trigger = dropdown.querySelector('summary');
   const wrap = dropdown.querySelector('.nav-menu-wrap');
@@ -18,6 +53,10 @@ for (const dropdown of document.querySelectorAll('[data-nav-dropdown]')) {
   function fitMenu() {
     const top = dropdown.getBoundingClientRect().bottom + parseFloat(getComputedStyle(wrap).paddingTop);
     wrap.style.setProperty('--menu-max-height', `${Math.max(72, window.innerHeight - top - 16)}px`);
+    wrap.style.marginLeft = '0px';
+    const bounds = wrap.getBoundingClientRect();
+    const correction = bounds.left < 16 ? 16 - bounds.left : bounds.right > window.innerWidth - 16 ? window.innerWidth - 16 - bounds.right : 0;
+    wrap.style.marginLeft = `${correction}px`;
   }
 
   function setOpen(next) {
@@ -26,6 +65,7 @@ for (const dropdown of document.querySelectorAll('[data-nav-dropdown]')) {
     isOpen = next;
     trigger.setAttribute('aria-expanded', String(next));
     if (next) {
+      dropdown.dispatchEvent(new CustomEvent('nav-dropdown-open', {bubbles:true}));
       dropdown.open = true;
       wrap.inert = false;
       fitMenu();
@@ -54,7 +94,11 @@ for (const dropdown of document.querySelectorAll('[data-nav-dropdown]')) {
     if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
     event.preventDefault();
     setOpen(true);
-    (event.key === 'ArrowDown' ? links[0] : links.at(-1))?.focus();
+    const destination = event.key === 'ArrowDown' ? links[0] : links.at(-1);
+    // Wait for the visibility transition to expose the panel before moving focus.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (isOpen) destination?.focus();
+    }));
   });
   dropdown.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
@@ -69,6 +113,9 @@ for (const dropdown of document.querySelectorAll('[data-nav-dropdown]')) {
   });
   document.addEventListener('pointerdown', event => {
     if (!dropdown.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener('nav-dropdown-open', event => {
+    if (event.target !== dropdown && isOpen) setOpen(false);
   });
   window.addEventListener('resize', () => { if (isOpen) fitMenu(); });
   window.addEventListener('pageshow', () => setOpen(false));
