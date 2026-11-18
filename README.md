@@ -37,7 +37,7 @@ The eight active cover images are in `dist/assets/images/`. Replace files or upd
 
 The top navigation is Homepage, Seminars, Lecture Materials, Reading Journal, and More Information. The two dropdowns are generated from the `seminars` and `lectureMaterials` arrays; adding a collection automatically adds its menu link, page, and sitemap entry. Reading Journal is a direct link. On narrow screens the navigation occupies two rows and menu panels stay inside the viewport. Opening one dropdown closes the other. Its pale blue-gray gradient panel uses background blur, opens on mouse hover, and stays open while the pointer moves into the panel. It closes when the pointer leaves the trigger and panel, focus leaves, Escape is pressed, or the user clicks outside. Touch users can tap to toggle it; keyboard users can press Enter, Space, or an arrow key on Seminars and follow the links with Tab. Without JavaScript, the native disclosure remains clickable. Long menus scroll within the available viewport.
 
-Existing topic and about URLs are preserved. Homepage introduction, seminar Information sections, and the three More Information sections use shared, initially collapsed accordions. History & Progress and Recent Updates remain visible sections. The paper section headings are black, bold, and compressed vertically by 6%; the date/speaker/talk typography is unchanged.
+The Algebraic Topology page keeps its existing `topology/` URL. The empty Differentiable Manifolds section and page were removed on 2026-11-18 because its subject will be covered together with Riemann Geometry; all other existing page URLs are preserved. Homepage introduction, seminar Information sections, and the three More Information sections use shared, initially collapsed accordions. History & Progress and Recent Updates remain visible sections. The paper section headings are black, bold, and compressed vertically by 6%; the date/speaker/talk typography is unchanged.
 
 Styles live in `dist/assets/site.css`; optional navigation and accordion enhancements live in `dist/assets/site.js`. Fonts are hosted locally, with their OFL licenses beside them. The site does not depend on a remote font service.
 
@@ -49,6 +49,8 @@ Before each publication, regenerate pages and check the affected links and image
 
 ## Lecture Materials and Reading Journal
 
-Lecture Materials starts with Complex Analysis and Basic Topology. Each has an initially collapsed Information & Introduction section and an always-visible History & Progress section; both collections are initially empty. Fill each collection’s `introduction` array with paragraphs and its `entries` array with PDFs and notes as needed.
+Lecture Materials contains Complex Analysis, Basic Topology, and Classical Differential Geometry. Each has an initially collapsed Information & Introduction section and an always-visible History & Progress section; all three collections are currently empty. Fill each collection’s `introduction` array with paragraphs and its `entries` array with PDFs and notes as needed.
 
 Reading Journal has its own `quote` array, displayed in the same Pinyon font without the Led Zeppelin attribution. Its curiosity-led Introduction is initially collapsed and its history initially empty. All other pages retain the existing quotation and attribution. The quotation uses a named cross-document view transition; browsers without that feature use an optional short fade when entering or leaving the journal. Reduced-motion preferences skip the motion.
+
+Classical Differential Geometry reuses the former Differentiable Manifolds cover (`manifolds.jpg`), retaining the established architectural style. Its Information & Introduction and History & Progress are ready for future materials.

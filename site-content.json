@@ -42,7 +42,7 @@
   "seminars": [
     {
       "id": "topology",
-      "title": "Topology & Algebraic Topology",
+      "title": "Algebraic Topology",
       "cover": { "file": "topology.jpg", "alt": "A circular opening within curving concrete architecture", "position": "center 50%" },
       "textbook": "",
       "mentor": { "name": "" },
@@ -61,15 +61,6 @@
           "sample": true
         }
       ]
-    },
-    {
-      "id": "differential-manifolds",
-      "title": "Differentiable Manifolds",
-      "cover": { "file": "manifolds.jpg", "alt": "A flowing white architectural surface beneath a blue sky", "position": "center 55%" },
-      "textbook": "",
-      "mentor": { "name": "" },
-      "student": { "name": "" },
-      "entries": []
     },
     {
       "id": "riemann-geometry",
@@ -101,6 +92,13 @@
         "alt": "Overlapping concrete stair flights beneath a geometric opening to daylight",
         "position": "center 45%"
       },
+      "introduction": [],
+      "entries": []
+    },
+    {
+      "id": "classical-differential-geometry",
+      "title": "Classical Differential Geometry",
+      "cover": { "file": "manifolds.jpg", "alt": "A flowing white architectural surface beneath a blue sky", "position": "center 55%" },
       "introduction": [],
       "entries": []
     }

@@ -30,3 +30,5 @@ The following fictional architectural scenes were generated with the built-in im
 - Complex Analysis: `dist/assets/images/complex-analysis.png` — curved concrete walls and a circular skylight.
 - Basic Topology: `dist/assets/images/basic-topology.png` — overlapping stair flights and a rectangular opening.
 - Reading Journal: `dist/assets/images/reading-journal.png` — stairs ascending toward natural light.
+
+On 2026-11-18, the former Differentiable Manifolds cover (`manifolds.jpg`) was reused for Classical Differential Geometry when the standalone manifolds section was removed. Its original source and license remain unchanged.
