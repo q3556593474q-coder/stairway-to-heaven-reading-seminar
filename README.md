@@ -18,10 +18,10 @@ To preview locally, serve `dist/` with any static web server. There are no runti
 
 ## Content updates
 
-Edit `site-content.json`, then run `node render.mjs`. This regenerates all eight HTML pages and automatically lists non-sample entries from seminars, lecture materials, and the reading journal under Recent Updates. The initial trial entry has `sample: true`, so the homepage remains empty as requested.
+Edit `site-content.json`, then run `node render.mjs`. This regenerates all seven HTML pages and automatically lists non-sample entries from seminars and lecture materials under Recent Updates. The initial trial entry has `sample: true`, so the homepage remains empty as requested.
 
 - Put PDFs in `dist/assets/notes/`, using stable English filenames.
-- Add an entry to the relevant collection's `entries` array (`seminars`, `lectureMaterials`, or `readingJournal`): `id`, `date` (YYYY-MM-DD), `speaker`, `title`, `abstract`, `pdf`, and optional `pdfLabel`.
+- Add an entry to the relevant collection's `entries` array (`seminars` or `lectureMaterials`): `id`, `date` (YYYY-MM-DD), `speaker`, `title`, `abstract`, `pdf`, and optional `pdfLabel`.
 - Use a stable entry ID so previously shared links remain valid.
 - Set `sample: false` or omit it for a real entry to appear in Recent Updates.
 - To remove a sample or real entry later, delete its object from `entries` and render again. Remove its PDF files only when no remaining entry links to them. Commit and push the change to update the published website. Git history preserves earlier revisions.
@@ -33,11 +33,11 @@ Edit `site-content.json`, then run `node render.mjs`. This regenerates all eight
 
 ## Cover and layout updates
 
-The eight active cover images are in `dist/assets/images/`. Replace files or update their filenames, alternative text, and crop position in `site-content.json`. Photo sources and generated cover details are in `ASSET-CREDITS.md`; the three new section prompts are in `NEW-COVER-PROMPTS.md`.
+The seven active cover images are in `dist/assets/images/`. Replace files or update their filenames, alternative text, and crop position in `site-content.json`. Photo sources and generated cover details are in `ASSET-CREDITS.md`; the three new section prompts are in `NEW-COVER-PROMPTS.md`.
 
-The top navigation is Homepage, Seminars, Lecture Materials, Reading Journal, and More Information. The two dropdowns are generated from the `seminars` and `lectureMaterials` arrays; adding a collection automatically adds its menu link, page, and sitemap entry. Reading Journal is a direct link. On narrow screens the navigation occupies two rows and menu panels stay inside the viewport. Opening one dropdown closes the other. Its pale blue-gray gradient panel uses background blur, opens on mouse hover, and stays open while the pointer moves into the panel. It closes when the pointer leaves the trigger and panel, focus leaves, Escape is pressed, or the user clicks outside. Touch users can tap to toggle it; keyboard users can press Enter, Space, or an arrow key on Seminars and follow the links with Tab. Without JavaScript, the native disclosure remains clickable. Long menus scroll within the available viewport.
+The top navigation is Homepage, Seminars, Lecture Materials, and More Information. The two dropdowns are generated from the `seminars` and `lectureMaterials` arrays; adding a collection automatically adds its menu link, page, and sitemap entry. On narrow screens the navigation occupies two rows and menu panels stay inside the viewport. Opening one dropdown closes the other. Its pale blue-gray gradient panel uses background blur, opens on mouse hover, and stays open while the pointer moves into the panel. It closes when the pointer leaves the trigger and panel, focus leaves, Escape is pressed, or the user clicks outside. Touch users can tap to toggle it; keyboard users can press Enter, Space, or an arrow key on Seminars and follow the links with Tab. Without JavaScript, the native disclosure remains clickable. Long menus scroll within the available viewport.
 
-The Algebraic Topology page keeps its existing `topology/` URL. The empty Differentiable Manifolds section and page were removed on 2026-11-18 because its subject will be covered together with Riemann Geometry; all other existing page URLs are preserved. Homepage introduction, seminar Information sections, and the three More Information sections use shared, initially collapsed accordions. History & Progress and Recent Updates remain visible sections. The paper section headings are black, bold, and compressed vertically by 6%; the date/speaker/talk typography is unchanged.
+The Algebraic Topology page keeps its existing `topology/` URL. The empty Differentiable Manifolds section and page were removed on 2026-11-18 because its subject will be covered together with Riemann Geometry; Reading Journal was removed on 2026-11-20. Remaining page URLs are preserved. Homepage introduction, seminar Information sections, and the two More Information sections use shared, initially collapsed accordions. History & Progress and Recent Updates remain visible sections. The paper section headings are black, bold, and compressed vertically by 6%; the date/speaker/talk typography is unchanged.
 
 Styles live in `dist/assets/site.css`; optional navigation and accordion enhancements live in `dist/assets/site.js`. Fonts are hosted locally, with their OFL licenses beside them. The site does not depend on a remote font service.
 
@@ -47,10 +47,10 @@ The repository keeps the complete source on `main`. In Settings → Pages, use G
 
 Before each publication, regenerate pages and check the affected links and images. Keep PDF attachment bytes unchanged. `siteUrl` determines the canonical page addresses and the generated `sitemap.xml`; update it if the public website address changes.
 
-## Lecture Materials and Reading Journal
+## Lecture Materials
 
 Lecture Materials contains Complex Analysis, Basic Topology, and Classical Differential Geometry. Each has an initially collapsed Information & Introduction section and an always-visible History & Progress section; all three collections are currently empty. Fill each collection’s `introduction` array with paragraphs and its `entries` array with PDFs and notes as needed.
 
-Reading Journal has its own `quote` array, displayed in the same Pinyon font without the Led Zeppelin attribution. Its curiosity-led Introduction is initially collapsed and its history initially empty. All other pages retain the existing quotation and attribution. The quotation uses a named cross-document view transition; browsers without that feature use an optional short fade when entering or leaving the journal. Reduced-motion preferences skip the motion.
-
 Classical Differential Geometry reuses the former Differentiable Manifolds cover (`manifolds.jpg`), retaining the established architectural style. Its Information & Introduction and History & Progress are ready for future materials.
+
+On 2026-11-20, Reading Journal and More Information About the Textbooks Used were removed at the owner’s request. Their prior content remains recoverable from Git history; the journal cover is retained as an unused asset.

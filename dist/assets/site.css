@@ -16,7 +16,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid cur
 .quote .attribution{align-self:flex-end;text-align:right;font-size:.44em;line-height:1.4;margin-top:13px;letter-spacing:.02em;color:#d5d9d9}
 .navigation{position:sticky;top:0;z-index:10;border-top:1px solid rgba(232,238,240,.12)}
 .navigation:before{content:'';position:absolute;inset:0;z-index:-1;background:rgba(25,50,71,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);pointer-events:none}
-.nav-inner{max-width:1200px;width:calc(100% - 80px);min-height:76px;margin:0 auto;display:grid;grid-template-columns:1fr auto auto auto 1fr;align-items:center;column-gap:clamp(18px,3vw,48px)}
+.nav-inner{max-width:1200px;width:calc(100% - 80px);min-height:76px;margin:0 auto;display:grid;grid-template-columns:1fr auto auto 1fr;align-items:center;column-gap:clamp(18px,3vw,48px)}
 .nav-home{justify-self:start}.nav-more{justify-self:end}
 .nav-top-link,.nav-trigger{position:relative;color:#dce3e7;font-size:1rem;font-weight:400;line-height:1.5;white-space:nowrap;transition:color .25s}
 .nav-top-link{display:block;padding:14px 0}
@@ -121,10 +121,8 @@ h1{font-size:clamp(2.85rem,5.05vw,5rem);font-weight:700;line-height:1.08;letter-
 
 @media(max-width:400px){.nav-inner{width:calc(100% - 28px)}.nav-top-link,.nav-trigger{font-size:.78rem}.nav-trigger{gap:6px}}
 
-/* A shared quotation layer keeps the journal's change separate from the page fade. */
+/* A shared quotation layer keeps the header transition separate from the page fade. */
 .quote{view-transition-name:masthead-quote}
-.journal-quote{line-height:1.2}
-.quote-line{display:block;max-width:100%;text-wrap:balance}
 ::view-transition-group(masthead-quote){animation-duration:650ms;animation-timing-function:var(--ease)}
 ::view-transition-old(masthead-quote){animation:quote-depart 240ms ease both}
 ::view-transition-new(masthead-quote){animation:quote-arrive 650ms var(--ease) 110ms both}
@@ -132,12 +130,11 @@ h1{font-size:clamp(2.85rem,5.05vw,5rem);font-weight:700;line-height:1.08;letter-
 @keyframes quote-arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:1000px) and (min-width:761px){.nav-inner{width:calc(100% - 48px);column-gap:14px}.nav-top-link,.nav-trigger{font-size:.875rem}}
 @media(max-width:760px){
-  .nav-inner{grid-template-columns:1fr 1fr 1.3fr;column-gap:10px;min-height:104px;padding:3px 0}
+  .nav-inner{grid-template-columns:1fr 1fr;column-gap:10px;min-height:104px;padding:3px 0}
   .nav-trigger{min-height:49px;padding:0;gap:6px}
   .nav-trigger:after{left:0;right:0;bottom:7px}
   .nav-top-link{padding:12px 0}
-  .nav-journal{grid-column:1 / 3;justify-self:center}
-  .nav-more{grid-column:3;justify-self:end}
+  .nav-more{grid-column:2;justify-self:end}
   .nav-menu-wrap{padding-top:6px}
   html{scroll-padding-top:125px}
   .seminar-entry{scroll-margin-top:135px}

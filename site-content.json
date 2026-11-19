@@ -28,14 +28,6 @@
         "Mathematical reading grows through conversation. This section will introduce the mentors who help guide the seminar through questions, explanations, and feedback.",
         "Their academic profiles, research interests, and contributions to our discussions will be collected here."
       ]
-    },
-    {
-      "id": "about-the-textbooks",
-      "title": "More Information About the Textbooks Used",
-      "paragraphs": [
-        "The seminar draws on textbooks in topology, differentiable manifolds, and Riemann geometry. Each reading group will list its chosen text and the chapters discussed.",
-        "Additional references, comments on prerequisites, and suggestions for further reading will be added as the program develops."
-      ]
     }
   ],
   "homeCover": { "file": "home-upward.png", "alt": "An upward view of a curved concrete stairway beneath a luminous skylight", "position": "center 20%" },
@@ -102,22 +94,5 @@
       "introduction": [],
       "entries": []
     }
-  ],
-  "readingJournal": {
-    "id": "reading-journal",
-    "title": "Reading Journal",
-    "quote": [
-      "Love life as though death were near;",
-      "Seek knowledge as though life were endless."
-    ],
-    "cover": {
-      "file": "reading-journal.png",
-      "alt": "A quiet concrete stairway ascending toward natural light between gently curving walls",
-      "position": "center 45%"
-    },
-    "introduction": [
-      "A journal of mathematical reading guided by curiosity. These notes trace ideas, questions, and connections encountered along the way, leaving room for reflection and return."
-    ],
-    "entries": []
-  }
+  ]
 }

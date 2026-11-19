@@ -18,17 +18,13 @@ function dropdown(label, id, items, page, prefix) {
 }
 
 function header(page, prefix) {
-  const journal = page === content.readingJournal.id;
-  const quotation = journal
-    ? content.readingJournal.quote.map(line => `<span class="quote-line">${escape(line)}</span>`).join('')
-    : `<span>${escape(content.quote)}</span><span class="attribution">${escape(content.attribution)}</span>`;
+  const quotation = `<span>${escape(content.quote)}</span><span class="attribution">${escape(content.attribution)}</span>`;
   return `<a class="skip-link" href="#main">Skip to content</a>
-  <header class="masthead"><a class="quote${journal ? ' journal-quote' : ''}" href="${prefix}index.html" aria-label="Return to homepage">${quotation}</a></header>
+  <header class="masthead"><a class="quote" href="${prefix}index.html" aria-label="Return to homepage">${quotation}</a></header>
   <nav class="navigation" aria-label="Main navigation"><div class="nav-inner">
     <a class="nav-top-link nav-home" href="${prefix}index.html"${page === 'home' ? ' aria-current="page"' : ''}>Homepage</a>
     ${dropdown('Seminars', 'seminars', content.seminars, page, prefix)}
     ${dropdown('Lecture Materials', 'lecture-materials', content.lectureMaterials, page, prefix)}
-    <a class="nav-top-link nav-journal" href="${prefix}${escape(content.readingJournal.id)}/index.html"${journal ? ' aria-current="page"' : ''}>${escape(content.readingJournal.title)}</a>
     <a class="nav-top-link nav-more" href="${prefix}about/index.html"${page === 'about' ? ' aria-current="page"' : ''}>More Information</a>
   </div></nav>`;
 }
@@ -96,7 +92,7 @@ function layout(page, title, prefix, body) {
 }
 
 await mkdir(output, {recursive:true});
-const collections = [...content.seminars, ...content.lectureMaterials, content.readingJournal];
+const collections = [...content.seminars, ...content.lectureMaterials];
 const recent = collections.flatMap(collection => collection.entries.filter(item => !item.sample).map(item => ({...item, seminar:collection.id}))).sort((a,b) => b.date.localeCompare(a.date)).slice(0,8);
 const updateContent = recent.length ? `<ul class="updates-list">${recent.map(item => `<li><time datetime="${item.date}">${dateLabel(item.date)}</time><a href="${item.seminar}/index.html#${item.id}">${escape(item.title)}</a></li>`).join('')}</ul>` : '<div class="blank-space" aria-hidden="true"></div>';
 const home = hero('Reading Seminars', content.homeCover, '', content.author) + `<div class="paper">${disclosure('introduction-title', 'Introduction of the program', paragraphs(content.introduction))}${section('updates-title','Recent Updates',updateContent)}</div>`;
@@ -106,8 +102,8 @@ for (const seminar of content.seminars) {
   await mkdir(path.join(output,seminar.id),{recursive:true});
   await writeFile(path.join(output,seminar.id,'index.html'),layout(seminar.id,seminar.title,'../',body));
 }
-for (const collection of [...content.lectureMaterials, content.readingJournal]) {
-  const heading = collection.id === content.readingJournal.id ? 'Introduction' : 'Information & Introduction';
+for (const collection of content.lectureMaterials) {
+  const heading = 'Information & Introduction';
   const introduction = paragraphs(collection.introduction) || '<div class="blank-space" aria-hidden="true"></div>';
   const body = hero(collection.title,collection.cover,'../') + `<div class="paper seminar-paper">${disclosure('information-title',heading,introduction)}${history(collection.entries,'../')}</div>`;
   await mkdir(path.join(output,collection.id),{recursive:true});
@@ -119,4 +115,4 @@ await writeFile(path.join(output,'about','index.html'),layout('about','More Info
 await writeFile(path.join(output,'.nojekyll'),'');
 const sitemapPages = ['', ...collections.map(collection => `${collection.id}/`), 'about/'];
 await writeFile(path.join(output,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map(page => `  <url><loc>${escape(new URL(page, content.siteUrl).href)}</loc></url>`).join('\n')}\n</urlset>\n`);
-console.log(`Rendered ${sitemapPages.length} pages, including Lecture Materials and Reading Journal.`);
+console.log(`Rendered ${sitemapPages.length} pages, including seminars and lecture materials.`);
