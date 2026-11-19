@@ -26,7 +26,7 @@ Edit `site-content.json`, then run `node render.mjs`. This regenerates all seven
 - Set `sample: false` or omit it for a real entry to appear in Recent Updates.
 - To remove a sample or real entry later, delete its object from `entries` and render again. Remove its PDF files only when no remaining entry links to them. Commit and push the change to update the published website. Git history preserves earlier revisions.
 - Mentor and student names and textbook descriptions are intentionally blank. Email fields have been removed.
-- `introduction` and `aboutSections` contain demonstration paragraphs requested for preview. Replace them with finalized content before treating them as a finished biography or program description.
+- `introduction` contains the owner's approved program description, with the opening sentence in its own paragraph. `aboutSections` still contains demonstration paragraphs requested for preview; replace those before treating them as a finished biography.
 - `discussionPdf` adds a separate Further complement from discussion PDF link to an entry. It can point to a different file when real discussion supplements are available.
 - `handwritingPdf` adds an Original Handwriting Version PDF link on the next line. Keep the handwritten original in its own file so it can be updated independently of the typed notes and discussion supplement.
 - Keep the provided PDF unchanged. The current one-page demonstration PDF is intentionally used for the main notes, discussion supplement, and handwritten original links. The Covering maps description is sample text, not a summary of the attachment.
