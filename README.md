@@ -54,3 +54,9 @@ Lecture Materials contains Complex Analysis, Basic Topology, and Classical Diffe
 Classical Differential Geometry reuses the former Differentiable Manifolds cover (`manifolds.jpg`), retaining the established architectural style. Its Information & Introduction and History & Progress are ready for future materials.
 
 On 2026-11-20, Reading Journal and More Information About the Textbooks Used were removed at the owner’s request. Their prior content remains recoverable from Git history; the journal cover is retained as an unused asset.
+
+## Navigation and cache consistency
+
+The desktop navigation uses four equal-width columns with centered labels and matching underline positions. Narrow screens use a balanced two-by-two grid.
+
+`render.mjs` derives a deterministic build revision from the content, generator, CSS, and JavaScript. Every internal page link and the CSS/JavaScript URLs carry `?v=<revision>`; canonical URLs stay clean. This prevents a new page from loading an older cached stylesheet, and makes navigation fetch pages from the same release rather than an older cached menu. When sharing a just-published fix with an existing visitor, use the generated homepage link with its revision to bypass any cached entry page. The revision is also recorded in the `site-build` meta tag.

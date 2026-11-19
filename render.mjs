@@ -1,10 +1,22 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const content = JSON.parse(await readFile(path.join(root, 'site-content.json'), 'utf8'));
 const output = path.join(root, 'dist');
+// Every page and its assets use one stable revision, so cached HTML and CSS
+// from different deployments cannot be mixed during internal navigation.
+const revisionSources = await Promise.all([
+  readFile(fileURLToPath(import.meta.url)),
+  readFile(path.join(output, 'assets/site.css')),
+  readFile(path.join(output, 'assets/site.js')),
+]);
+const revisionHash = createHash('sha256').update(JSON.stringify(content));
+for (const source of revisionSources) revisionHash.update('\0').update(source);
+const revision = revisionHash.digest('hex').slice(0, 12);
+const pageHref = (prefix, page = 'index.html') => `${prefix}${page}?v=${revision}`;
 const escape = (value = '') => String(value).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const dateLabel = value => new Intl.DateTimeFormat('en-US', {month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(value + 'T12:00:00Z'));
 const favicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a3144'/%3E%3Cpath d='M7 25h6v-6h6v-6h6V7' fill='none' stroke='%23f5f3ee' stroke-width='3'/%3E%3C/svg%3E";
@@ -13,19 +25,19 @@ function dropdown(label, id, items, page, prefix) {
   const isCurrent = items.some(item => item.id === page);
   return `<details class="nav-dropdown${isCurrent ? ' has-current-page' : ''}" data-nav-dropdown>
     <summary class="nav-trigger" aria-controls="${id}-menu">${escape(label)}<span class="nav-chevron" aria-hidden="true"></span></summary>
-    <div class="nav-menu-wrap"><ul class="nav-menu" id="${id}-menu" aria-label="${escape(label)}">${items.map(item => `<li><a href="${prefix}${escape(item.id)}/index.html"${item.id === page ? ' aria-current="page"' : ''}><span>${escape(item.title)}</span><span class="nav-item-arrow" aria-hidden="true">→</span></a></li>`).join('')}</ul></div>
+    <div class="nav-menu-wrap"><ul class="nav-menu" id="${id}-menu" aria-label="${escape(label)}">${items.map(item => `<li><a href="${escape(pageHref(prefix, `${item.id}/index.html`))}"${item.id === page ? ' aria-current="page"' : ''}><span>${escape(item.title)}</span><span class="nav-item-arrow" aria-hidden="true">→</span></a></li>`).join('')}</ul></div>
   </details>`;
 }
 
 function header(page, prefix) {
   const quotation = `<span>${escape(content.quote)}</span><span class="attribution">${escape(content.attribution)}</span>`;
   return `<a class="skip-link" href="#main">Skip to content</a>
-  <header class="masthead"><a class="quote" href="${prefix}index.html" aria-label="Return to homepage">${quotation}</a></header>
+  <header class="masthead"><a class="quote" href="${pageHref(prefix)}" aria-label="Return to homepage">${quotation}</a></header>
   <nav class="navigation" aria-label="Main navigation"><div class="nav-inner">
-    <a class="nav-top-link nav-home" href="${prefix}index.html"${page === 'home' ? ' aria-current="page"' : ''}>Homepage</a>
+    <a class="nav-top-link nav-home" href="${pageHref(prefix)}"${page === 'home' ? ' aria-current="page"' : ''}>Homepage</a>
     ${dropdown('Seminars', 'seminars', content.seminars, page, prefix)}
     ${dropdown('Lecture Materials', 'lecture-materials', content.lectureMaterials, page, prefix)}
-    <a class="nav-top-link nav-more" href="${prefix}about/index.html"${page === 'about' ? ' aria-current="page"' : ''}>More Information</a>
+    <a class="nav-top-link nav-more" href="${pageHref(prefix, 'about/index.html')}"${page === 'about' ? ' aria-current="page"' : ''}>More Information</a>
   </div></nav>`;
 }
 
@@ -77,24 +89,25 @@ function layout(page, title, prefix, body) {
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="${escape(page === 'home' ? content.title + ' — mathematical reading and notes by ' + content.author + '.' : title + ' | ' + content.title)}">
   <meta name="author" content="${escape(content.author)}">
+  <meta name="site-build" content="${revision}">
   <link rel="canonical" href="${escape(canonicalUrl)}">
   <meta name="theme-color" content="#193247">
   <title>${escape(page === 'home' ? content.title : title + ' — ' + content.title)}</title>
   <link rel="icon" type="image/svg+xml" href="${favicon}">
   <link rel="preload" as="font" type="font/ttf" href="${prefix}assets/fonts/pinyon-script.ttf" crossorigin>
-  <link rel="stylesheet" href="${prefix}assets/site.css">
+  <link rel="stylesheet" href="${prefix}assets/site.css?v=${revision}">
 </head><body data-page="${page}">
   ${header(page, prefix)}
   <main id="main" class="page-shell">${body}</main>
-  <footer class="footer"><a class="site-name" href="${prefix}index.html">${escape(content.title)}</a><span>© ${content.copyrightYear} ${escape(content.author)}. All rights reserved.</span></footer>
-  <script src="${prefix}assets/site.js" defer></script>
+  <footer class="footer"><a class="site-name" href="${pageHref(prefix)}">${escape(content.title)}</a><span>© ${content.copyrightYear} ${escape(content.author)}. All rights reserved.</span></footer>
+  <script src="${prefix}assets/site.js?v=${revision}" defer></script>
 </body></html>\n`;
 }
 
 await mkdir(output, {recursive:true});
 const collections = [...content.seminars, ...content.lectureMaterials];
 const recent = collections.flatMap(collection => collection.entries.filter(item => !item.sample).map(item => ({...item, seminar:collection.id}))).sort((a,b) => b.date.localeCompare(a.date)).slice(0,8);
-const updateContent = recent.length ? `<ul class="updates-list">${recent.map(item => `<li><time datetime="${item.date}">${dateLabel(item.date)}</time><a href="${item.seminar}/index.html#${item.id}">${escape(item.title)}</a></li>`).join('')}</ul>` : '<div class="blank-space" aria-hidden="true"></div>';
+const updateContent = recent.length ? `<ul class="updates-list">${recent.map(item => `<li><time datetime="${item.date}">${dateLabel(item.date)}</time><a href="${escape(pageHref('', `${item.seminar}/index.html`))}#${escape(item.id)}">${escape(item.title)}</a></li>`).join('')}</ul>` : '<div class="blank-space" aria-hidden="true"></div>';
 const home = hero('Reading Seminars', content.homeCover, '', content.author) + `<div class="paper">${disclosure('introduction-title', 'Introduction of the program', paragraphs(content.introduction))}${section('updates-title','Recent Updates',updateContent)}</div>`;
 await writeFile(path.join(output,'index.html'),layout('home',content.title,'',home));
 for (const seminar of content.seminars) {

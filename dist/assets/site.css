@@ -16,11 +16,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid cur
 .quote .attribution{align-self:flex-end;text-align:right;font-size:.44em;line-height:1.4;margin-top:13px;letter-spacing:.02em;color:#d5d9d9}
 .navigation{position:sticky;top:0;z-index:10;border-top:1px solid rgba(232,238,240,.12)}
 .navigation:before{content:'';position:absolute;inset:0;z-index:-1;background:rgba(25,50,71,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);pointer-events:none}
-.nav-inner{max-width:1200px;width:calc(100% - 80px);min-height:76px;margin:0 auto;display:grid;grid-template-columns:1fr auto auto 1fr;align-items:center;column-gap:clamp(18px,3vw,48px)}
-.nav-home{justify-self:start}.nav-more{justify-self:end}
+.nav-inner{max-width:1200px;width:calc(100% - 80px);min-height:76px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;column-gap:16px}
+.nav-inner>*{justify-self:center;min-width:0}
 .nav-top-link,.nav-trigger{position:relative;color:#dce3e7;font-size:1rem;font-weight:400;line-height:1.5;white-space:nowrap;transition:color .25s}
-.nav-top-link{display:block;padding:14px 0}
+.nav-top-link{display:flex;align-items:center;justify-content:center;min-height:76px;padding:0 8px}
 .nav-top-link:after,.nav-trigger:after{content:'';position:absolute;left:0;right:0;bottom:7px;height:1px;background:#e7dfce;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.nav-top-link:after{left:8px;right:8px;bottom:18px}
 .nav-top-link:hover,.nav-top-link[aria-current=page],.nav-trigger:hover,.nav-dropdown.has-current-page .nav-trigger,.nav-dropdown[open] .nav-trigger{color:white}
 .nav-top-link:hover:after,.nav-top-link[aria-current=page]:after,.nav-trigger:hover:after,.nav-dropdown.has-current-page .nav-trigger:after,.nav-dropdown[open] .nav-trigger:after{transform:scaleX(1)}
 .nav-dropdown{position:relative;align-self:stretch}
@@ -133,8 +134,8 @@ h1{font-size:clamp(2.85rem,5.05vw,5rem);font-weight:700;line-height:1.08;letter-
   .nav-inner{grid-template-columns:1fr 1fr;column-gap:10px;min-height:104px;padding:3px 0}
   .nav-trigger{min-height:49px;padding:0;gap:6px}
   .nav-trigger:after{left:0;right:0;bottom:7px}
-  .nav-top-link{padding:12px 0}
-  .nav-more{grid-column:2;justify-self:end}
+  .nav-top-link{min-height:49px;padding:0}
+  .nav-top-link:after{left:0;right:0;bottom:7px}
   .nav-menu-wrap{padding-top:6px}
   html{scroll-padding-top:125px}
   .seminar-entry{scroll-margin-top:135px}
