@@ -17,9 +17,10 @@
       "id": "about-me",
       "title": "About Me",
       "paragraphs": [
-        "I am Hanzhen Bao. This website brings together my mathematical reading notes, seminar materials, and reflections from discussion.",
-        "My reading follows connections between topology, differentiable manifolds, and geometry, with particular attention to examples and the ideas behind proofs."
-      ]
+        "My CV will be updated regularly."
+      ],
+      "pdf": "hanzhen-bao-cv.pdf",
+      "pdfLabel": "CV"
     },
     {
       "id": "about-my-mentors",

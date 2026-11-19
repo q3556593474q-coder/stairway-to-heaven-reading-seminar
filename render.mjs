@@ -123,7 +123,7 @@ for (const collection of content.lectureMaterials) {
   await writeFile(path.join(output,collection.id,'index.html'),layout(collection.id,collection.title,'../',body));
 }
 await mkdir(path.join(output,'about'),{recursive:true});
-const about = hero('More Information',content.informationCover,'../') + `<div class="paper more-information-paper">${content.aboutSections.map(item => disclosure(item.id,item.title,paragraphs(item.paragraphs))).join('')}</div>`;
+const about = hero('More Information',content.informationCover,'../') + `<div class="paper more-information-paper">${content.aboutSections.map(item => disclosure(item.id,item.title,paragraphs(item.paragraphs) + (item.pdf ? `<p class="pdf-link"><a href="../assets/notes/${escape(item.pdf)}?v=${revision}" target="_blank" rel="noopener">${escape(item.pdfLabel || 'PDF')}</a></p>` : ''))).join('')}</div>`;
 await writeFile(path.join(output,'about','index.html'),layout('about','More Information','../',about));
 await writeFile(path.join(output,'.nojekyll'),'');
 const sitemapPages = ['', ...collections.map(collection => `${collection.id}/`), 'about/'];
