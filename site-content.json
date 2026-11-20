@@ -26,9 +26,16 @@
     {
       "id": "about-my-mentors",
       "title": "About My Mentors",
-      "paragraphs": [
-        "Mathematical reading grows through conversation. This section will introduce the mentors who help guide the seminar through questions, explanations, and feedback.",
-        "Their academic profiles, research interests, and contributions to our discussions will be collected here."
+      "paragraphs": [],
+      "profiles": [
+        {
+          "name": "Jingcao Wu",
+          "url": "https://math.sufe.edu.cn/12/fc/c20711a267004/page.htm"
+        },
+        {
+          "name": "Hongzhi Liu",
+          "url": "https://math.sufe.edu.cn/13/0f/c20711a267023/page.htm"
+        }
       ]
     }
   ],
@@ -120,7 +127,9 @@
       ],
       "participants": [
         "LingYu Yu",
-        "Hanzhen Bao"
+        "Hanzhen Bao",
+        "Jingcao Wu (Sufe Mentor)",
+        "Hongzhi Liu (Sufe Mentor)"
       ]
     },
     {
@@ -209,7 +218,9 @@
       ],
       "participants": [
         "LingYu Yu",
-        "Hanzhen Bao"
+        "Hanzhen Bao",
+        "Jingcao Wu (Sufe Mentor)",
+        "Hongzhi Liu (Sufe Mentor)"
       ]
     }
   ],

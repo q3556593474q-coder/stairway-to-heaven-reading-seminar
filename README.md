@@ -26,7 +26,7 @@ Edit `site-content.json`, then run `node render.mjs`. This regenerates all seven
 - Set `sample: false` or omit it for real entries. Add their IDs to `recentUpdateIds` only when the owner wants them featured on the homepage.
 - To remove a sample or real entry later, delete its object from `entries` and render again. Remove its PDF files only when no remaining entry links to them. Commit and push the change to update the published website. Git history preserves earlier revisions.
 - Both seminars list textbooks and participants without Mentor/Student role labels. Email fields have been removed.
-- `introduction` contains the owner's approved program description, with the opening sentence in its own paragraph. About Me links to the owner's supplied CV, which is updated regularly. About My Mentors still contains demonstration paragraphs requested for preview.
+- `introduction` contains the owner's approved program description, with the opening sentence in its own paragraph. About Me links to the owner's supplied CV, which is updated regularly. About My Mentors lists Jingcao Wu and Hongzhi Liu, with bold names and links to their supplied SUFE faculty pages. These entries use the `profiles` array with `name` and `url`.
 - About-section attachments use `pdf` (a filename in `dist/assets/notes/`) and `pdfLabel`. The current CV is `hanzhen-bao-cv.pdf`, displayed as a blue “CV” link opening in a new tab. For a replacement CV, use a new dated filename and update `pdf` so the release revision changes and visitors receive the latest file.
 - `discussionPdf` adds a separate Further complement from discussion PDF link to an entry. It can point to a different file when real discussion supplements are available.
 - `handwritingPdf` adds an Original Handwriting Version PDF link on the next line. Keep the handwritten original in its own file so it can be updated independently of the typed notes and discussion supplement.
@@ -51,7 +51,7 @@ Before each publication, regenerate pages and check the affected links and image
 
 ## Algebraic Topology reading seminar
 
-Seven entries follow the owner’s supplied order: Homology 1 (September 22), Homology 2 (September 29), Homotopy 1 (October 16), Homotopy 2 (October 21), Vector Bundles and Characteristic Classes 1 (November 5), Vector Bundles and Characteristic Classes 2 (November 10), and Obstruction Theory (November 16), all in 2026 and attributed to `Y-B`. Each contains its PDF’s original abstract and one Notes (PDF) link. Participants are LingYu Yu and Hanzhen Bao.
+Seven entries follow the owner’s supplied order: Homology 1 (September 22), Homology 2 (September 29), Homotopy 1 (October 16), Homotopy 2 (October 21), Vector Bundles and Characteristic Classes 1 (November 5), Vector Bundles and Characteristic Classes 2 (November 10), and Obstruction Theory (November 16), all in 2026 and attributed to `Y-B`. Each contains its PDF’s original abstract and one Notes (PDF) link. Participants are LingYu Yu, Hanzhen Bao, Jingcao Wu (Sufe Mentor), and Hongzhi Liu (Sufe Mentor); the same list is used for Riemannian Geometry.
 
 Textbooks were verified against primary sources: Allen Hatcher’s [Algebraic Topology](https://pi.math.cornell.edu/~hatcher/AT/ATpage.html), and John Milnor and James D. Stasheff’s [Characteristic Classes](https://press.princeton.edu/books/paperback/9780691081229/characteristic-classes).
 
