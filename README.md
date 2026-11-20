@@ -30,6 +30,7 @@ Edit `site-content.json`, then run `node render.mjs`. This regenerates all seven
 - About-section attachments use `pdf` (a filename in `dist/assets/notes/`) and `pdfLabel`. The current CV is `hanzhen-bao-cv.pdf`, displayed as a blue “CV” link opening in a new tab. For a replacement CV, use a new dated filename and update `pdf` so the release revision changes and visitors receive the latest file.
 - `discussionPdf` adds a separate Further complement from discussion PDF link to an entry. It can point to a different file when real discussion supplements are available.
 - `handwritingPdf` adds an Original Handwriting Version PDF link on the next line. Keep the handwritten original in its own file so it can be updated independently of the typed notes and discussion supplement.
+- Set `showDownload: false` to display only the primary PDF link for an entry.
 - Keep the provided PDF unchanged. The current one-page demonstration PDF is intentionally used for the main notes, discussion supplement, and handwritten original links. The Covering maps description is sample text, not a summary of the attachment.
 
 ## Cover and layout updates
@@ -47,6 +48,12 @@ Styles live in `dist/assets/site.css`; optional navigation and accordion enhance
 The repository keeps the complete source on `main`. In Settings → Pages, use GitHub Actions as the publishing source. `.github/workflows/pages.yml` renders the website and publishes only `dist/` whenever `main` is updated. The README, content data, and generator remain in the repository without becoming extra website pages. A manual run is also available through the Actions tab.
 
 Before each publication, regenerate pages and check the affected links and images. Keep PDF attachment bytes unchanged. `siteUrl` determines the canonical page addresses and the generated `sitemap.xml`; update it if the public website address changes.
+
+## Riemannian Geometry reading seminar
+
+The Riemannian Geometry title retains its existing `riemann-geometry/` URL. Its seven entries follow the owner's chronological order: September 25, October 9, October 14, October 19, October 27, November 2, and November 5, 2026. The first five are attributed to `Y-B`, and Supplement 1 and Supplement 2 to `B`. Titles follow the source filenames; abstracts are copied from the first-page Abstract sections with line-wrap hyphenation removed. PDFs are preserved byte-for-byte and each entry displays one PDF link. All seven real entries also appear under Recent Updates.
+
+This seminar uses `textbooks` and `participants` arrays; participants are listed without Mentor/Student roles. The English translation used for Wu's title is *An Introduction to Riemannian Geometry*. Bibliographic checks: [Higher Education Press](https://academic.hep.com.cn/im/CN/book/978-7-04-040458-6) and [do Carmo's publisher](https://link.springer.com/book/9780817634902).
 
 ## Lecture Materials
 

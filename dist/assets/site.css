@@ -61,7 +61,7 @@ h1{font-size:clamp(2.85rem,5.05vw,5rem);font-weight:700;line-height:1.08;letter-
 .seminar-paper{padding-bottom:65px}
 .entries{padding:31px 0 17px}
 .seminar-entry{scroll-margin-top:135px;overflow:hidden}
-.seminar-entry+.seminar-entry{margin-top:24px;border-top:1px solid var(--rule);padding-top:24px}
+.seminar-entry+.seminar-entry{margin-top:32px;border-top:1px solid var(--rule);padding-top:32px}
 .seminar-entry summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:24px;font-size:1.18rem;line-height:1.8;padding:7px 2px;transition:color .2s}
 .seminar-entry summary::-webkit-details-marker{display:none}
 .entry-line{flex:1}.entry-line strong{color:#555e65;font-weight:700;margin-left:5px}
@@ -112,6 +112,9 @@ h1{font-size:clamp(2.85rem,5.05vw,5rem);font-weight:700;line-height:1.08;letter-
 .seminar-information strong{font-weight:700;color:#525c65}
 .seminar-information .textbook-note{display:flex;gap:18px;margin:0 0 7px}
 .textbook-note strong{white-space:nowrap}
+.textbook-list{min-width:0}
+.textbook-list span{display:block}
+.seminar-information .participant-list{margin:0 0 0 20px}
 .seminar-information .participants-note>p{margin:0 0 3px}
 .participant-note{display:grid;grid-template-columns:80px minmax(0,1fr);column-gap:26px;min-height:28px;margin-left:20px}
 .participant-name{min-width:0;overflow-wrap:anywhere}

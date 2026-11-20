@@ -65,6 +65,10 @@ function disclosure(id, title, inner, bodyClass = '') {
 }
 
 function seminarInformation(seminar) {
+  if (seminar.participants) {
+    return `<p class="textbook-note"><strong>Textbook Used:</strong><span class="textbook-list">${seminar.textbooks.map(book => `<span>${escape(book)}</span>`).join('')}</span></p>
+    <div class="participants-note"><p><strong>Participants:</strong></p><p class="participant-list">${seminar.participants.map(escape).join(', ')}</p></div>`;
+  }
   return `<p class="textbook-note"><strong>Textbook Used:</strong><span>${escape(seminar.textbook)}</span></p>
     <div class="participants-note"><p><strong>Participants:</strong></p><div class="participant-note"><strong>Mentor:</strong><span class="participant-name">${escape(seminar.mentor.name)}</span></div><div class="participant-note"><strong>Student:</strong><span class="participant-name">${escape(seminar.student.name)}</span></div></div>`;
 }
@@ -72,7 +76,7 @@ function seminarInformation(seminar) {
 function entry(item, prefix) {
   return `<details class="seminar-entry" id="${escape(item.id)}" data-accordion>
     <summary><span class="entry-line"><time datetime="${escape(item.date)}">${dateLabel(item.date)},</time> <strong>${escape(item.speaker)}</strong><span class="entry-comma">,</span> <span class="talk-title">${escape(item.title)}</span></span><span class="entry-toggle" aria-hidden="true"></span></summary>
-    <div class="entry-body" data-accordion-body><ul><li><p>${escape(item.abstract)}</p></li><li class="pdf-link"><a href="${prefix}assets/notes/${escape(item.pdf)}" target="_blank" rel="noopener">${escape(item.pdfLabel || 'Lecture notes (PDF)')}</a><span class="pdf-divider" aria-hidden="true">·</span><a class="download-link" href="${prefix}assets/notes/${escape(item.pdf)}" download>Download</a></li>${item.discussionPdf ? `<li class="discussion-link">Further complement from discussion <a href="${prefix}assets/notes/${escape(item.discussionPdf)}" target="_blank" rel="noopener" aria-label="Further complement from discussion (PDF)">PDF</a></li>` : ''}${item.handwritingPdf ? `<li class="discussion-link">Original Handwriting Version <a href="${prefix}assets/notes/${escape(item.handwritingPdf)}" target="_blank" rel="noopener" aria-label="Original Handwriting Version (PDF)">PDF</a></li>` : ''}</ul></div>
+    <div class="entry-body" data-accordion-body><ul><li><p>${escape(item.abstract)}</p></li><li class="pdf-link"><a href="${prefix}assets/notes/${escape(item.pdf)}" target="_blank" rel="noopener">${escape(item.pdfLabel || 'Lecture notes (PDF)')}</a>${item.showDownload === false ? '' : `<span class="pdf-divider" aria-hidden="true">·</span><a class="download-link" href="${prefix}assets/notes/${escape(item.pdf)}" download>Download</a>`}</li>${item.discussionPdf ? `<li class="discussion-link">Further complement from discussion <a href="${prefix}assets/notes/${escape(item.discussionPdf)}" target="_blank" rel="noopener" aria-label="Further complement from discussion (PDF)">PDF</a></li>` : ''}${item.handwritingPdf ? `<li class="discussion-link">Original Handwriting Version <a href="${prefix}assets/notes/${escape(item.handwritingPdf)}" target="_blank" rel="noopener" aria-label="Original Handwriting Version (PDF)">PDF</a></li>` : ''}</ul></div>
   </details>`;
 }
 

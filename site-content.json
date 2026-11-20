@@ -57,12 +57,92 @@
     },
     {
       "id": "riemann-geometry",
-      "title": "Riemann Geometry",
-      "cover": { "file": "riemann.jpg", "alt": "A spiraling staircase within a curved museum interior", "position": "center 50%" },
-      "textbook": "",
-      "mentor": { "name": "" },
-      "student": { "name": "" },
-      "entries": []
+      "title": "Riemannian Geometry",
+      "cover": {
+        "file": "riemann.jpg",
+        "alt": "A spiraling staircase within a curved museum interior",
+        "position": "center 50%"
+      },
+      "entries": [
+        {
+          "id": "differential-topology-1-2026-09-25",
+          "date": "2026-09-25",
+          "speaker": "Y-B",
+          "title": "Differential Topology 1",
+          "abstract": "Smooth Manifolds; Tangent Spaces and Tangent Maps; Inverse Function and Constant Rank Theorems; Regular Values and Sard’s Theorem; Submanifolds; Tubular Neighborhoods; Cup Product and Intersection; Transversality.",
+          "pdf": "2026-09-25-differential-topology-1.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "differential-topology-2-2026-10-09",
+          "date": "2026-10-09",
+          "speaker": "Y-B",
+          "title": "Differential Topology 2",
+          "abstract": "Vector fields; Time-dependent vector fields and isotopies; Moser’s trick; Flows; Introduction to Morse theory; Handle decomposition; Morse homology; Stable and unstable manifolds; Morse–Smale condition and moduli space; Poincaré duality; Lie derivative; Chern–Weil theory; Smooth structures on spheres and the Poincaré conjecture.",
+          "pdf": "2026-10-09-differential-topology-2.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "differential-topology-3-2026-10-14",
+          "date": "2026-10-14",
+          "speaker": "Y-B",
+          "title": "Differential Topology 3",
+          "abstract": "Tensors; Wedge product; Differential forms and pullback; Exterior derivative; de Rham cohomology; Lie derivative; Connections; Hopf invariant; Volume-preserving flows; Degree of a map and local orientation; Orientation; Integration; Counting.",
+          "pdf": "2026-10-14-differential-topology-3.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "riemannian-geometry-1-2026-10-19",
+          "date": "2026-10-19",
+          "speaker": "Y-B",
+          "title": "Riemannian Geometry 1",
+          "abstract": "Course outline; Riemannian metrics; Connections and the Levi–Civita connection; Geodesics; Exponential map; Curvature and Jacobi fields; Curvature contractions; Curvature and topology; Complex manifolds and almost complex structures; Complexified tangent and cotangent bundles; Differential forms and Dolbeault cohomology; Hermitian and Kähler metrics; Examples and the canonical bundle; Hodge theory and Kodaira theorems.",
+          "pdf": "2026-10-19-riemannian-geometry-1.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "riemannian-geometry-2-2026-10-27",
+          "date": "2026-10-27",
+          "speaker": "Y-B",
+          "title": "Riemannian Geometry 2",
+          "abstract": "Levi–Civita connection and Riemann curvature; Ricci, scalar and sectional curvature; Curvature in dimension three and Einstein manifolds; Covariant derivatives of tensors; Gradient; Commutation of covariant derivatives; Second Bianchi identity; An Einstein condition; Hessian and Laplacian; Bochner formula for functions; The Laplacian on a closed manifold; The first eigenvalue estimate; Divergence of a vector field; Isometry group and Killing vector fields; Bochner formula for Killing fields; Consequences for the isometry group; Harmonic one-forms and Ricci solitons.",
+          "pdf": "2026-10-27-riemannian-geometry-2.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "riemannian-supplement-1-2026-11-02",
+          "date": "2026-11-02",
+          "speaker": "B",
+          "title": "Supplement 1",
+          "abstract": "Connections and their arguments; Existence of connections; The Levi–Civita connection; Koszul formula and orthonormal frames; Induced metrics and connections; Covariant derivatives along curves; Parallel fields and parallel transport; Metric compatibility and parallel transport.",
+          "pdf": "2026-11-02-riemannian-supplement-1.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "riemannian-supplement-2-2026-11-05",
+          "date": "2026-11-05",
+          "speaker": "B",
+          "title": "Supplement 2",
+          "abstract": "Covariant derivatives along curves; Geodesics; Exponential map; Riemann curvature tensor; Jacobi fields; The do Carmo convention and curvature identities; Curvature components; Sectional curvature; Constant sectional curvature; Ricci and scalar curvature; Coordinate expressions and traces.",
+          "pdf": "2026-11-05-riemannian-supplement-2.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        }
+      ],
+      "textbooks": [
+        "Hongxi Wu et al. — An Introduction to Riemannian Geometry",
+        "Manfredo P. do Carmo — Riemannian Geometry"
+      ],
+      "participants": [
+        "LingYu Yu",
+        "Hanzhen Bao"
+      ]
     }
   ],
   "lectureMaterials": [
