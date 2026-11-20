@@ -5,6 +5,7 @@
   "siteUrl": "https://q3556593474q-coder.github.io/stairway-to-heaven-reading-seminar/",
   "author": "Hanzhen Bao",
   "copyrightYear": 2026,
+  "recentUpdateIds": ["obstruction-theory-2026-11-16"],
   "quote": "To Be a Rock and not to roll",
   "attribution": "— Led Zeppelin, Stairway To Heaven",
   "introduction": [
@@ -36,23 +37,90 @@
     {
       "id": "topology",
       "title": "Algebraic Topology",
-      "cover": { "file": "topology.jpg", "alt": "A circular opening within curving concrete architecture", "position": "center 50%" },
-      "textbook": "",
-      "mentor": { "name": "" },
-      "student": { "name": "" },
+      "cover": {
+        "file": "topology.jpg",
+        "alt": "A circular opening within curving concrete architecture",
+        "position": "center 50%"
+      },
       "entries": [
         {
-          "id": "covering-maps-2026-09-14",
-          "date": "2026-09-14",
-          "speaker": "BaoHanzhen",
-          "title": "Covering maps",
-          "abstract": "This sample session introduces covering maps through evenly covered neighborhoods and the familiar covering of the circle by the real line. We discuss path lifting, the relationship with the fundamental group, and a selection of basic examples. The attached draft serves as a sample of the notes that will accompany each reading seminar.",
-          "pdf": "2026-09-14-demonstration.pdf",
-          "pdfLabel": "Sample notes (PDF)",
-          "discussionPdf": "2026-09-14-demonstration.pdf",
-          "handwritingPdf": "2026-09-14-original-handwriting.pdf",
-          "sample": true
+          "id": "homology-1-2026-09-22",
+          "date": "2026-09-22",
+          "speaker": "Y-B",
+          "title": "Homology 1",
+          "abstract": "Homology; Abelianization and orientability; Long exact sequences; Cones and suspension; Mayer–Vietoris sequence; A geometric viewpoint; Relative homology; Degree; Hairy ball theorem; Fixed points on projective spaces; Lefschetz number; Kronecker index; Integration.",
+          "pdf": "2026-09-22-homology-1.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "homology-2-2026-09-29",
+          "date": "2026-09-29",
+          "speaker": "Y-B",
+          "title": "Homology 2",
+          "abstract": "Singular homology; Degree of maps; Connected sums and degree-one maps; Singular cohomology and cup products; Kronecker pairing and cap products; Poincaré duality and degree; A quartic surface; Universal coefficients and three-manifolds; A six-dimensional example; Intersection forms and signature.",
+          "pdf": "2026-09-29-homology-2.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "homotopy-1-2026-10-16",
+          "date": "2026-10-16",
+          "speaker": "Y-B",
+          "title": "Homotopy 1",
+          "abstract": "Derived functors; Lefschetz duality; Retractions onto the boundary; Cup and cap products; Signature and cobordism; Boundaries of contractible manifolds; Homotopy theory; Covering spaces and products; Eilenberg–MacLane spaces; Representable functors; Fibrations; Cellular approximation; Whitehead theorem; Classical groups; Cohomology rings.",
+          "pdf": "2026-10-16-homotopy-1.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "homotopy-2-2026-10-21",
+          "date": "2026-10-21",
+          "speaker": "Y-B",
+          "title": "Homotopy 2",
+          "abstract": "Homotopy theory; Approximation theorems; Eilenberg–MacLane spaces; Fibrations; Homotopy fibers; Hurewicz theorems; Homological equivalences; Suspension and loop spaces; Puppe sequences; Submanifold representatives; Stable homotopy groups; Vector bundles.",
+          "pdf": "2026-10-21-homotopy-2.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "vector-bundles-and-characteristic-classes-1-2026-11-05",
+          "date": "2026-11-05",
+          "speaker": "Y-B",
+          "title": "Vector Bundles and Characteristic Classes 1",
+          "abstract": "Vector bundles and operations; Classifying space; Characteristic classes; Chern classes and Stiefel–Whitney classes; Properties of Chern classes; Properties of Stiefel–Whitney classes; Wu classes; Three-manifolds and spin geometry; Wu’s formula and Steenrod squares; Euler class and Thom class; Vanishing of the Euler class; Relations among characteristic classes; Properties of the Euler class.",
+          "pdf": "2026-11-05-vector-bundles-and-characteristic-classes-1.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "vector-bundles-and-characteristic-classes-2-2026-11-10",
+          "date": "2026-11-10",
+          "speaker": "Y-B",
+          "title": "Vector Bundles and Characteristic Classes 2",
+          "abstract": "Recall; Wu’s formula; Euler class; Relations; Poincaré duality of submanifolds and the Euler class of the normal bundle; Pontryagin classes; Characteristic numbers; Cobordism; Splitting principle and Chern roots; Chern character; Todd class; Hirzebruch–Riemann–Roch; Hirzebruch signature theorem; Principal bundles; Associated bundles; Fiber bundles and structure groups; Classifying spaces; Topological tangent bundle; Reduction of structure groups.",
+          "pdf": "2026-11-10-vector-bundles-and-characteristic-classes-2.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
+        },
+        {
+          "id": "obstruction-theory-2026-11-16",
+          "date": "2026-11-16",
+          "speaker": "Y-B",
+          "title": "Obstruction Theory",
+          "abstract": "Recall; Obstruction theory; Oriented three-manifolds; Kirby–Siebenmann invariant; Reduction of structure group; The universal first Stiefel–Whitney class; Nowhere-vanishing sections; Hypersurfaces and the Euler class; The general lifting problem; Moore–Postnikov tower; Connections; Local computation: endomorphisms; Connection one-forms; Curvature; Bianchi identity; Trace; Chern–Weil theory; Chern classes and the Chern–Weil argument; Gauss–Bonnet–Chern.",
+          "pdf": "2026-11-16-obstruction-theory.pdf",
+          "pdfLabel": "Notes (PDF)",
+          "showDownload": false
         }
+      ],
+      "textbooks": [
+        "Allen Hatcher — Algebraic Topology",
+        "John Milnor and James D. Stasheff — Characteristic Classes"
+      ],
+      "participants": [
+        "LingYu Yu",
+        "Hanzhen Bao"
       ]
     },
     {

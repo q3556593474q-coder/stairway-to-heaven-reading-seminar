@@ -18,20 +18,20 @@ To preview locally, serve `dist/` with any static web server. There are no runti
 
 ## Content updates
 
-Edit `site-content.json`, then run `node render.mjs`. This regenerates all seven HTML pages and automatically lists non-sample entries from seminars and lecture materials under Recent Updates. The initial trial entry has `sample: true`, so the homepage remains empty as requested.
+Edit `site-content.json`, then run `node render.mjs`. This regenerates all seven HTML pages. `recentUpdateIds` explicitly selects which real entries appear under Recent Updates; it currently contains only `obstruction-theory-2026-11-16`, as requested. Removing this field restores automatic listing of the latest eight non-sample entries; an empty array hides all updates.
 
 - Put PDFs in `dist/assets/notes/`, using stable English filenames.
 - Add an entry to the relevant collection's `entries` array (`seminars` or `lectureMaterials`): `id`, `date` (YYYY-MM-DD), `speaker`, `title`, `abstract`, `pdf`, and optional `pdfLabel`.
 - Use a stable entry ID so previously shared links remain valid.
-- Set `sample: false` or omit it for a real entry to appear in Recent Updates.
+- Set `sample: false` or omit it for real entries. Add their IDs to `recentUpdateIds` only when the owner wants them featured on the homepage.
 - To remove a sample or real entry later, delete its object from `entries` and render again. Remove its PDF files only when no remaining entry links to them. Commit and push the change to update the published website. Git history preserves earlier revisions.
-- Mentor and student names and textbook descriptions are intentionally blank. Email fields have been removed.
+- Both seminars list textbooks and participants without Mentor/Student role labels. Email fields have been removed.
 - `introduction` contains the owner's approved program description, with the opening sentence in its own paragraph. About Me links to the owner's supplied CV, which is updated regularly. About My Mentors still contains demonstration paragraphs requested for preview.
 - About-section attachments use `pdf` (a filename in `dist/assets/notes/`) and `pdfLabel`. The current CV is `hanzhen-bao-cv.pdf`, displayed as a blue “CV” link opening in a new tab. For a replacement CV, use a new dated filename and update `pdf` so the release revision changes and visitors receive the latest file.
 - `discussionPdf` adds a separate Further complement from discussion PDF link to an entry. It can point to a different file when real discussion supplements are available.
 - `handwritingPdf` adds an Original Handwriting Version PDF link on the next line. Keep the handwritten original in its own file so it can be updated independently of the typed notes and discussion supplement.
 - Set `showDownload: false` to display only the primary PDF link for an entry.
-- Keep the provided PDF unchanged. The current one-page demonstration PDF is intentionally used for the main notes, discussion supplement, and handwritten original links. The Covering maps description is sample text, not a summary of the attachment.
+- Preserve supplied PDFs byte-for-byte. The Covering maps sample entry and its two unused demonstration PDFs were removed at the owner’s request on 2026-11-20; earlier versions remain in Git history.
 
 ## Cover and layout updates
 
@@ -49,9 +49,15 @@ The repository keeps the complete source on `main`. In Settings → Pages, use G
 
 Before each publication, regenerate pages and check the affected links and images. Keep PDF attachment bytes unchanged. `siteUrl` determines the canonical page addresses and the generated `sitemap.xml`; update it if the public website address changes.
 
+## Algebraic Topology reading seminar
+
+Seven entries follow the owner’s supplied order: Homology 1 (September 22), Homology 2 (September 29), Homotopy 1 (October 16), Homotopy 2 (October 21), Vector Bundles and Characteristic Classes 1 (November 5), Vector Bundles and Characteristic Classes 2 (November 10), and Obstruction Theory (November 16), all in 2026 and attributed to `Y-B`. Each contains its PDF’s original abstract and one Notes (PDF) link. Participants are LingYu Yu and Hanzhen Bao.
+
+Textbooks were verified against primary sources: Allen Hatcher’s [Algebraic Topology](https://pi.math.cornell.edu/~hatcher/AT/ATpage.html), and John Milnor and James D. Stasheff’s [Characteristic Classes](https://press.princeton.edu/books/paperback/9780691081229/characteristic-classes).
+
 ## Riemannian Geometry reading seminar
 
-The Riemannian Geometry title retains its existing `riemann-geometry/` URL. Its seven entries follow the owner's chronological order: September 25, October 9, October 14, October 19, October 27, November 2, and November 5, 2026. The first five are attributed to `Y-B`, and Supplement 1 and Supplement 2 to `B`. Titles follow the source filenames; abstracts are copied from the first-page Abstract sections with line-wrap hyphenation removed. PDFs are preserved byte-for-byte and each entry displays one PDF link. All seven real entries also appear under Recent Updates.
+The Riemannian Geometry title retains its existing `riemann-geometry/` URL. Its seven entries follow the owner's chronological order: September 25, October 9, October 14, October 19, October 27, November 2, and November 5, 2026. The first five are attributed to `Y-B`, and Supplement 1 and Supplement 2 to `B`. Titles follow the source filenames; abstracts are copied from the first-page Abstract sections with line-wrap hyphenation removed. PDFs are preserved byte-for-byte and each entry displays one PDF link. These entries remain in the seminar history; the homepage now features only Obstruction Theory from Algebraic Topology.
 
 This seminar uses `textbooks` and `participants` arrays; participants are listed without Mentor/Student roles. The English translation used for Wu's title is *An Introduction to Riemannian Geometry*. Bibliographic checks: [Higher Education Press](https://academic.hep.com.cn/im/CN/book/978-7-04-040458-6) and [do Carmo's publisher](https://link.springer.com/book/9780817634902).
 

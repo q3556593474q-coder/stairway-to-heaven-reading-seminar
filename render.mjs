@@ -110,7 +110,7 @@ function layout(page, title, prefix, body) {
 
 await mkdir(output, {recursive:true});
 const collections = [...content.seminars, ...content.lectureMaterials];
-const recent = collections.flatMap(collection => collection.entries.filter(item => !item.sample).map(item => ({...item, seminar:collection.id}))).sort((a,b) => b.date.localeCompare(a.date)).slice(0,8);
+const recent = collections.flatMap(collection => collection.entries.filter(item => !item.sample && (!content.recentUpdateIds || content.recentUpdateIds.includes(item.id))).map(item => ({...item, seminar:collection.id}))).sort((a,b) => b.date.localeCompare(a.date)).slice(0,8);
 const updateContent = recent.length ? `<ul class="updates-list">${recent.map(item => `<li><time datetime="${item.date}">${dateLabel(item.date)}</time><a href="${escape(pageHref('', `${item.seminar}/index.html`))}#${escape(item.id)}">${escape(item.title)}</a></li>`).join('')}</ul>` : '<div class="blank-space" aria-hidden="true"></div>';
 const home = hero('Reading Seminars', content.homeCover, '', content.author) + `<div class="paper">${disclosure('introduction-title', 'Introduction of the program', paragraphs(content.introduction))}${section('updates-title','Recent Updates',updateContent)}</div>`;
 await writeFile(path.join(output,'index.html'),layout('home',content.title,'',home));
